@@ -44,7 +44,7 @@
       </nav>
 
       <!-- MAIN -->
-      <div class="container">
+      <!-- <div class="container">
         <div class="input-group input-group-lg my-5">
           <input
             v-model="newTask"
@@ -78,21 +78,46 @@
             >
               <i class="fa fa-times"></i>
             </span>
-          </li>
-
-          <!-- <li class="list-group-item d-flex align-items-center">
-            A list item
-            <span class="badge bg-danger rounded-pill ms-auto">
-              <i class="fa fa-times"></i>
-            </span>
-          </li>
-
-          <li class="list-group-item d-flex align-items-center">
-            A list item
-            <span class="badge bg-danger rounded-pill ms-auto">
-              <i class="fa fa-times"></i>
-            </span>
           </li> -->
+
+
+          <!-- CORREZIONE -->
+          <div class="container">
+            <div class="input-group input-group-lg my-5">
+              <input
+                v-model="newTask.text"
+                @keyUp.enter="addTodo()"
+                type="text"
+                class="form-control"
+                placeholder="New Task!"
+                aria-label="New Task!"
+                aria-describedby="button-addon2"
+              />
+              <button
+                @click="addTodo()"
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                Add task :-)
+              </button>
+            </div>
+            <!-- list -->
+            <h1 class="mt-5">Ecco le cosa da fare: </h1>
+            <ul class="list-group">
+              <li
+                v-for= "(todo, todoIndex) in todoList"
+                class= "list-group-item d-flex"
+                :class= "(todo.done) ? 'text-through' : ''"
+              >
+                <span @click="todo.done = !todo.done;">{{todoIndex}}) {{todo.text}}</span>
+
+                <button @click="removeTodo(todoIndex)" type="button" class="btn btn-danger ms-auto">
+                  <i class="fa fa-times"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
         </ol>
       </div>
     </div>
