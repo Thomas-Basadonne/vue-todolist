@@ -2,25 +2,42 @@ const { createApp } = Vue;
 const app = createApp({
   data() {
     return {
-      tasks: ["studia", "fai allenamento", "Accendi la play"],
-      //   [
-      //     { title: "accendi il pc", done: "true" },
-      //     { title: "studia Vue", done: "true" },
-      //     { title: "spegni il pc", done: "true" },
-      //   ],
+      todoList: [
+        { text: "accendi il pc", done: false },
+        { text: "studia Vue", done: true },
+        { text: "spegni il pc", done: false },
+      ],
 
-      newTask: "",
+      newTask: {
+        text: "",
+        done: false,
+      },
     };
   },
 
   methods: {
-    addTask() {
-      this.tasks.push(this.newTask);
-    },
+    // addTask() {
+    //   this.tasks.push(this.newTask);
+    // },
 
-    removeTask(i) {
-      this.tasks.splice(i, 1);
+    // removeTask(i) {
+    //   this.tasks.splice(i, 1);
+    // },
+    removeTodo(index) {
+      this.todoList.splice(index, 1);
     },
+    addTodo() {
+      const newTodoCopy = {
+        // text: this.newTask.text,
+        // done: false,
+        ...this.newTask,
+      };
+      this.todoList.push(newTodoCopy);
+      this.newTask.text = "";
+    },
+    // todoDone(todo) {
+    //   todo.done = !todo.done;
+    // },
   },
 });
 
