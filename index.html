@@ -110,7 +110,7 @@
                 class= "list-group-item d-flex"
                 :class= "(todo.done) ? 'text-through' : ''"
               >
-                <span @click="todo.done = !todo.done;">{{todoIndex}}) {{todo.text}}</span>
+                <span @click="todo.done = !todo.done;">{{todoIndex + 1}}) {{todo.text}}</span>
 
                 <button @click="removeTodo(todoIndex)" type="button" class="btn btn-danger ms-auto">
                   <i class="fa fa-times"></i>
